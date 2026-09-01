@@ -1,0 +1,170 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #ececec; }
+body { color: #111; font-family: Georgia, "Times New Roman", serif; font-kerning: normal; }
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 10px 14px;
+  background: #20252a;
+  color: #fff;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+.toolbar button { border: 0; border-radius: 4px; padding: 9px 14px; font-weight: 700; cursor: pointer; background: #fff; color: #111; }
+.toolbar button.secondary { background: #dfe4e8; }
+.toolbar-note { font-size: 12px; opacity: .85; margin-left: 4px; }
+
+#formPages { padding: 22px 0; }
+.page {
+  position: relative;
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto 22px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 18px rgba(0,0,0,.14);
+}
+
+.header { position: absolute; left: .48in; top: .28in; width: 7.54in; height: 1.15in; }
+.wcb-logo { position: absolute; left: 0; top: .04in; width: 2.16in; height: auto; }
+.address { position: absolute; left: 2.36in; top: .08in; font-family: "Century Gothic", Arial, sans-serif; font-size: 9pt; line-height: 1.27; }
+.report-title { position: absolute; right: .72in; top: -.005in; font: 700 12.75pt/1 "Century Gothic", Arial, sans-serif; }
+.claim-box, .wp-box { position: absolute; top: .32in; border: 1.5px solid #111; height: .34in; display: flex; align-items: center; justify-content: center; font-family: Arial, Helvetica, sans-serif; }
+.claim-box { right: .84in; width: 1.58in; font-size: 11.25pt; }
+.wp-box { right: .03in; width: .40in; font-size: 11.25pt; font-weight: 700; }
+
+.intro { position: absolute; left: .48in; top: 1.40in; font-size: 11.25pt; color: #1f497d; }
+.section-title { position: absolute; margin: 0; font: 700 12.75pt/1 "Century Gothic", Arial, sans-serif; }
+.return-title { left: .48in; top: 1.82in; }
+.recovery-title { left: .50in; top: 7.67in; }
+.box { position: absolute; left: .48in; width: 7.55in; border: 1.35px solid #111; }
+.box-label { font-size: 8.25pt; line-height: 1.05; }
+.choice { display: inline-flex; align-items: flex-start; gap: 7px; cursor: pointer; font-size: 10.6pt; line-height: 1.08; }
+.choice input, .cert-row input { position: absolute; opacity: 0; pointer-events: none; }
+.fake-box { width: 11px; height: 11px; border: 1px solid #777; background: #fff; flex: 0 0 11px; margin-top: 2px; position: relative; }
+.choice input:checked + .fake-box::after, .cert-row input:checked + .fake-box::after {
+  content: "✓"; position: absolute; left: 1px; top: -4px; font: 700 12px/1 Arial, Helvetica, sans-serif; color: #111;
+}
+.line-input { display: inline-block; border-bottom: 1px solid #111; height: 20px; vertical-align: bottom; }
+.blue-value { color: #1b4d80; }
+.under-label { position: absolute; font-size: 8.25pt; line-height: 1; white-space: nowrap; transform: translateX(-50%); }
+
+.return-select { top: 1.99in; height: .78in; }
+.return-select .box-label { position: absolute; left: .06in; top: .07in; }
+.return-options { position: absolute; left: .08in; right: .06in; top: .30in; display: flex; justify-content: space-between; }
+.return-options .choice { width: 2.10in; }
+.return-options .returned-choice { width: 3.10in; }
+.returned-choice .line-input { width: 1.47in; margin-left: 4px; font-size: 11.25pt; padding: 0 2px 2px; text-align: center; }
+.date-label { left: 6.05in; top: .48in; }
+
+.working-box { top: 3.00in; height: 1.15in; }
+.working-box .box-label { position: absolute; left: .06in; top: .07in; }
+.working-grid { position: absolute; left: .08in; right: .10in; top: .31in; display: grid; grid-template-columns: 1.9in 1.9in 1.9in 1.9in; }
+.working-grid .choice { width: 1.83in; }
+.other-choice { position: absolute; left: .08in; top: .80in; width: 6.0in; }
+.inline-text { width: 4.7in; height: 18px; border: none; border-bottom: 1px solid #111; font: 11.25pt Georgia, "Times New Roman", serif; outline: none; background: transparent; }
+
+.return-going-box { top: 4.36in; height: .62in; }
+.return-going-box .box-label { position: absolute; left: .05in; top: .08in; }
+.going-value { position: absolute; left: .05in; top: .35in; font-size: 11.25pt; }
+
+.expect-row { position: absolute; left: .60in; top: 5.24in; width: 6.95in; height: .42in; font-size: 11.25pt; }
+.expect-row .line-input { position: absolute; left: 1.95in; top: .12in; width: 1.90in; }
+.expect-row .under-label { left: 2.90in; top: .27in; }
+
+.concerns-box { top: 5.65in; height: 1.15in; }
+.concerns-box .box-label { position: absolute; left: .05in; top: .08in; font-size: 11.25pt; }
+.concerns-box textarea, .recovery-comments textarea, .exercise-list textarea { position: absolute; left: .05in; right: .05in; top: .34in; bottom: .05in; resize: none; border: none; outline: none; background: transparent; font: 11.25pt Georgia, "Times New Roman", serif; }
+
+.contact-row { position: absolute; left: .53in; top: 7.08in; width: 6.98in; height: .58in; font-size: 10.6pt; }
+.contact-name { position: absolute; left: 2.15in; top: .18in; width: 1.88in; }
+.contact-row .contact-name-label { left: 3.09in; top: .38in; }
+.contact-on { position: absolute; left: 4.29in; top: 0; }
+.contact-date { position: absolute; left: 4.65in; top: .18in; width: 1.82in; }
+.contact-row .contact-date-label { left: 5.56in; top: .38in; }
+
+.recovery-select { top: 7.90in; height: .78in; }
+.recovery-select .box-label { position: absolute; left: .05in; top: .07in; }
+.recovery-options { position: absolute; left: .08in; right: .06in; top: .36in; display: flex; justify-content: space-between; }
+.recovery-options .choice { width: 3.74in; }
+
+.recovery-comments { top: 8.72in; height: 1.15in; }
+.recovery-comments .box-label { position: absolute; left: .05in; top: .08in; font-size: 11.25pt; }
+
+.footer { position: absolute; left: .68in; right: .55in; bottom: .23in; height: .35in; font: 9.75pt/1 Arial, Helvetica, sans-serif; }
+.footer > span:nth-child(1) { position: absolute; left: 0; bottom: .09in; }
+.footer > span:nth-child(2) { position: absolute; right: .18in; bottom: .09in; }
+.footer .page-number { position: absolute; right: .18in; bottom: -.09in; }
+
+/* Page 2 */
+.page-2 .pain-row { position: absolute; left: .53in; top: .40in; width: 7.42in; height: .46in; }
+.pain-copy { position: absolute; left: 0; top: 0; font-size: 11.25pt; line-height: 1.04; }
+.pain-grid { position: absolute; right: .06in; top: .00in; width: 3.62in; display: grid; grid-template-columns: repeat(5, .67in); row-gap: .12in; column-gap: .14in; }
+.pain-choice { font-size: 11.25pt; align-items: center; gap: 7px; }
+.pain-choice .fake-box { margin-top: 0; }
+.treatment-select { top: .80in; height: .96in; }
+.treatment-select .box-label { position: absolute; left: .05in; top: .07in; }
+.treatment-grid { position: absolute; left: .08in; right: .08in; top: .31in; height: .58in; display: grid; grid-template-columns: 2.25in 2.75in 2.40in; }
+.treatment-grid .choice { font-size: 10.6pt; width: 2.25in; line-height: 1.08; }
+.medical-type-line { position: absolute; right: .10in; top: .53in; width: 2.32in; }
+.medical-type-label { right: 1.23in; top: .66in; }
+.medical-line-row { position: absolute; left: .53in; width: 7.0in; height: .60in; font-size: 10.6pt; }
+.last-treatment { top: 1.90in; }
+.next-treatment { top: 2.65in; }
+.medical-line-row .date-line { position: absolute; left: 2.15in; top: .07in; width: 1.90in; }
+.medical-line-row .provider-line { position: absolute; left: 4.58in; top: .07in; width: 1.90in; }
+.medical-line-row .date-caption { left: 3.10in; top: .29in; }
+.medical-line-row .provider-caption { left: 5.53in; top: .29in; }
+.medical-line-row .from-word { position: absolute; left: 4.15in; top: .02in; }
+
+.physio-row { position: absolute; left: .53in; top: 3.30in; width: 7.0in; height: .42in; font-size: 10.6pt; }
+.frequency-line { position: absolute; left: 3.74in; top: .10in; width: 2.55in; }
+.physio-row .under-label { left: 5.00in; top: .29in; }
+
+.medication-box { top: 3.78in; height: 1.28in; }
+.medication-box .box-label { position: absolute; left: .05in; top: .07in; }
+.med-grid { position: absolute; left: .08in; right: .08in; top: .38in; height: .62in; display: grid; grid-template-columns: 2.32in 2.65in 2.35in; }
+.med-grid .choice { font-size: 10.6pt; width: 2.30in; line-height: 1.08; }
+.medication-line { position: absolute; right: .08in; top: .62in; width: 2.52in; }
+.medication-label { right: 1.10in; top: .82in; }
+
+.exercise-select { top: 5.10in; height: .62in; }
+.exercise-select .box-label { position: absolute; left: .05in; top: .07in; }
+.exercise-grid { position: absolute; left: .08in; right: .08in; top: .32in; display: grid; grid-template-columns: 4.05in 3.10in; }
+.exercise-grid .choice { font-size: 11.25pt; width: 4.0in; }
+
+.exercise-list { top: 5.86in; height: 1.14in; }
+.exercise-list .box-label { position: absolute; left: .05in; top: .08in; font-size: 11.25pt; }
+
+.other-title { left: .48in; top: 7.02in; }
+.other-info { top: 7.34in; height: .50in; }
+.other-info .box-label { position: absolute; left: .05in; top: .08in; font-size: 11.25pt; }
+.other-info-value { position: absolute; left: .05in; top: .30in; font-size: 11.25pt; }
+.page-2 .footer { bottom: .23in; }
+
+/* Page 3 */
+.page-3 .certification { position: absolute; left: .58in; top: .48in; width: 7.30in; }
+.cert-row { display: flex; align-items: flex-start; gap: 7px; font-size: 11.25pt; line-height: 1.04; cursor: pointer; }
+.cert-row .fake-box { margin-top: 3px; }
+.cert-row a { color: #0876c5; text-decoration: underline; }
+.privacy-row { margin-top: .36in; white-space: nowrap; }
+
+@media (max-width: 900px) {
+  #formPages { padding: 10px 0; }
+  .page { transform-origin: top center; margin-bottom: 10px; }
+  .toolbar { flex-wrap: wrap; }
+}
+
+@media print {
+  @page { size: Letter; margin: 0; }
+  html, body { background: #fff; }
+  .no-print { display: none !important; }
+  #formPages { padding: 0; }
+  .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+}
