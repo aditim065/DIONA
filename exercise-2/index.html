@@ -1,287 +1,82 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Worker Progress Report</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="toolbar no-print">
-    <button type="button" id="printBtn">Print / Save PDF</button>
-    <button type="button" id="resetBtn" class="secondary">Reset</button>
-    <span class="toolbar-note">Checkboxes are interactive. “Select one” sections behave like the original form.</span>
-  </div>
-
-  <main id="formPages">
-    <!-- PAGE 1 -->
-    <section class="page page-1" aria-label="Worker Progress Report page 1 of 3">
-      <header class="header">
-        <img class="wcb-logo" src="assets/wcb-logo.png" alt="Workers Compensation Board of Manitoba" />
-        <div class="address">
-          <div>333 Broadway</div>
-          <div>Winnipeg, MB R3C 4W3</div>
-          <div>Phone: (204) 954-4321</div>
-          <div>Toll Free: 1-855-954-4321</div>
-          <div>wcb.mb.ca</div>
-        </div>
-        <div class="report-title">Worker Progress Report</div>
-        <div class="claim-box">Claim No. 20042047</div>
-        <div class="wp-box">WP</div>
+  <main class="document">
+    <section class="page page-one">
+      <header class="masthead">
+        <div class="brand"><img src="assets/wcb-logo.png" alt="Workers Compensation Board of Manitoba"></div>
+        <address>333 Broadway<br>Winnipeg, MB R3C 4W3<br>Phone: (204) 954-4321<br>Toll Free: 1-855-954-4321<br>wcb.mb.ca</address>
+        <div class="title"><h1>Worker Progress Report</h1><div><b>Claim No. 20042047</b><b>WP</b></div></div>
       </header>
 
-      <div class="intro">Madeleine Willson provided the following updates in relation to their claim:</div>
-
-      <h2 class="section-title return-title">Return to Work</h2>
-
-      <div class="box return-select">
-        <div class="box-label">Select one:</div>
-        <div class="choice-row return-options">
-          <label class="choice" data-group="return-work">
-            <input type="checkbox" name="return-work" value="not-missed" />
-            <span class="fake-box"></span>
-            <span>I have not missed<br />time from work</span>
-          </label>
-          <label class="choice" data-group="return-work">
-            <input type="checkbox" name="return-work" value="not-returned" />
-            <span class="fake-box"></span>
-            <span>I have not returned<br />to work</span>
-          </label>
-          <label class="choice returned-choice" data-group="return-work">
-            <input type="checkbox" name="return-work" value="returned" checked />
-            <span class="fake-box"></span>
-            <span>I returned to work on:</span>
-            <span class="line-input blue-value">March 15, 2024</span>
-            <span class="under-label date-label">Date</span>
-          </label>
+      <p><strong class="blue">Madeleine Willson</strong> provided the following updates in relation to their claim:</p>
+      <h2>Return to Work</h2>
+      <fieldset><legend>Select one:</legend>
+        <div class="options cols-3" data-exclusive>
+          <label><input type="checkbox"> I have not missed<br>time from work</label>
+          <label><input type="checkbox"> I have not returned<br>to work</label>
+          <label><input type="checkbox" checked data-toggle="return-date"> I returned to work on: <span class="line blue">March 15, 2024</span></label>
         </div>
-      </div>
-
-      <div class="box working-box">
-        <div class="box-label">I am working:</div>
-        <div class="working-grid">
-          <label class="choice" data-group="working">
-            <input type="checkbox" name="working" value="full-regular" />
-            <span class="fake-box"></span><span>Full duties, regular<br />hours</span>
-          </label>
-          <label class="choice" data-group="working">
-            <input type="checkbox" name="working" value="full-reduced" />
-            <span class="fake-box"></span><span>Full duties, reduced<br />hours</span>
-          </label>
-          <label class="choice" data-group="working">
-            <input type="checkbox" name="working" value="modified-regular" />
-            <span class="fake-box"></span><span>Modified duties,<br />regular hours</span>
-          </label>
-          <label class="choice" data-group="working">
-            <input type="checkbox" name="working" value="modified-reduced" checked />
-            <span class="fake-box"></span><span>Modified duties,<br />reduced hours</span>
-          </label>
+      </fieldset>
+      <fieldset><legend>I am working:</legend>
+        <div class="options cols-4 work-options">
+          <label><input type="checkbox"> Full duties, regular<br>hours</label>
+          <label><input type="checkbox"> Full duties, reduced<br>hours</label>
+          <label><input type="checkbox"> Modified duties,<br>regular hours</label>
+          <label><input type="checkbox" checked> Modified duties,<br>reduced hours</label>
         </div>
-        <label class="choice other-choice" data-group="working">
-          <input type="checkbox" name="working" value="other" />
-          <span class="fake-box"></span><span>Other:</span>
-          <input class="inline-text" aria-label="Other work arrangement" type="text" />
-        </label>
-      </div>
-
-      <div class="box return-going-box">
-        <div class="box-label">My return to work is going:</div>
-        <div class="blue-value going-value">Terrible. Testing Testing</div>
-      </div>
-
-      <div class="expect-row">
-        <span>I expect to return to work on:</span>
-        <span class="line-input"></span>
-        <span class="under-label">Date</span>
-      </div>
-
-      <div class="box concerns-box">
-        <div class="box-label">I have the following concerns about returning to work:</div>
-        <textarea aria-label="Concerns about returning to work"></textarea>
-      </div>
-
-      <div class="contact-row">
-        <span>I was most recently in contact with:</span>
-        <span class="line-input contact-name"></span>
-        <span class="under-label contact-name-label">(Name of employer contact)</span>
-        <span class="contact-on">on</span>
-        <span class="line-input contact-date"></span>
-        <span class="under-label contact-date-label">Date</span>
-      </div>
-
-      <h2 class="section-title recovery-title">Recovery</h2>
-
-      <div class="box recovery-select">
-        <div class="box-label">Select one:</div>
-        <div class="choice-row recovery-options">
-          <label class="choice" data-group="recovery">
-            <input type="checkbox" name="recovery" value="not-recovered" />
-            <span class="fake-box"></span>
-            <span>I have not fully recovered from my workplace<br />injury.</span>
-          </label>
-          <label class="choice" data-group="recovery">
-            <input type="checkbox" name="recovery" value="recovered" checked />
-            <span class="fake-box"></span>
-            <span>I have fully recovered from my workplace<br />injury.</span>
-          </label>
+        <label class="other"><input type="checkbox" data-toggle="other-work"> Other: <input id="other-work" class="text-line" type="text" disabled></label>
+      </fieldset>
+      <label class="box-label return-status">My return to work is going:<textarea>Terrible. Testing Testing</textarea></label>
+      <div class="inline-row">I expect to return to work on: <span class="text-line short" aria-hidden="true"></span><small>Date</small></div>
+      <label class="box-label tall">I have the following concerns about returning to work:<textarea></textarea></label>
+      <div class="contact">I was most recently in contact with: <span><input class="text-line" type="text"><small>(Name of employer contact)</small></span> on <span><i class="text-line static-line" aria-hidden="true"></i><small>Date</small></span></div>
+      <h2>Recovery</h2>
+      <fieldset><legend>Select one:</legend>
+        <div class="options cols-2" data-exclusive>
+          <label><input type="checkbox"> I have not fully recovered from my workplace<br>injury.</label>
+          <label><input type="checkbox" checked> I have fully recovered from my workplace<br>injury.</label>
         </div>
-      </div>
-
-      <div class="box recovery-comments">
-        <div class="box-label">I have provided the following comments about my recovery:</div>
-        <textarea aria-label="Recovery comments"></textarea>
-      </div>
-
-      <footer class="footer">
-        <span>Worker App ID: 712041</span>
-        <span>Submitted: March 19, 2024 19:21</span>
-        <span class="page-number">Page 1 of 3</span>
-      </footer>
+      </fieldset>
+      <label class="box-label tall recovery">I have provided the following comments about my recovery:<textarea></textarea></label>
+      <footer><span>Worker <b>App ID:</b> 712041</span><span>Submitted: March 19, 2024 19:21<br>Page 1 of 3</span></footer>
     </section>
 
-    <!-- PAGE 2 -->
-    <section class="page page-2" aria-label="Worker Progress Report page 2 of 3">
-      <div class="pain-row">
-        <div class="pain-copy">I rate my current pain/discomfort on a scale of 1-10,<br />where 1 is no pain and 10 is severe pain out of 10.</div>
-        <div class="pain-grid">
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="1" /><span class="fake-box"></span><span>1</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="2" /><span class="fake-box"></span><span>2</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="3" /><span class="fake-box"></span><span>3</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="4" /><span class="fake-box"></span><span>4</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="5" /><span class="fake-box"></span><span>5</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="6" /><span class="fake-box"></span><span>6</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="7" /><span class="fake-box"></span><span>7</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="8" /><span class="fake-box"></span><span>8</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="9" /><span class="fake-box"></span><span>9</span></label>
-          <label class="choice pain-choice" data-group="pain"><input type="checkbox" name="pain" value="10" /><span class="fake-box"></span><span>10</span></label>
-        </div>
-      </div>
-
-      <div class="box treatment-select">
-        <div class="box-label">Select one:</div>
-        <div class="treatment-grid">
-          <label class="choice" data-group="treatment">
-            <input type="checkbox" name="treatment" value="not-continuing" />
-            <span class="fake-box"></span>
-            <span>I am not continuing to<br />receive medical treatment for<br />my workplace injury.</span>
-          </label>
-          <label class="choice" data-group="treatment">
-            <input type="checkbox" name="treatment" value="continuing" />
-            <span class="fake-box"></span>
-            <span>I am continuing to receive<br />medical treatment for my<br />workplace injury from:</span>
-          </label>
-          <span class="line-input medical-type-line"></span>
-          <span class="under-label medical-type-label">(Medical Provider Type)</span>
-        </div>
-      </div>
-
-      <div class="medical-line-row last-treatment">
-        <span>My last medical treatment was</span>
-        <span class="line-input date-line"></span>
-        <span class="under-label date-caption">Date</span>
-        <span class="from-word">from</span>
-        <span class="line-input provider-line"></span>
-        <span class="under-label provider-caption">(Medical Provider Name)</span>
-      </div>
-
-      <div class="medical-line-row next-treatment">
-        <span>My next medical treatment is</span>
-        <span class="line-input date-line"></span>
-        <span class="under-label date-caption">Date</span>
-        <span class="from-word">from</span>
-        <span class="line-input provider-line"></span>
-        <span class="under-label provider-caption">(Medical Provider Name)</span>
-      </div>
-
-      <div class="physio-row">
-        <span>I am attending a Chiropractor or Physiotherapist</span>
-        <span class="line-input frequency-line"></span>
-        <span class="under-label">(Frequency)</span>
-      </div>
-
-      <div class="box medication-box">
-        <div class="box-label">Select one:</div>
-        <div class="med-grid">
-          <label class="choice" data-group="medication">
-            <input type="checkbox" name="medication" value="not-taking" />
-            <span class="fake-box"></span>
-            <span>I am not taking medication<br />for my workplace injury.</span>
-          </label>
-          <label class="choice" data-group="medication">
-            <input type="checkbox" name="medication" value="taking" />
-            <span class="fake-box"></span>
-            <span>I am taking medication for my<br />workplace injury:</span>
-          </label>
-          <span class="line-input medication-line"></span>
-          <span class="under-label medication-label">(Name of prescribed medication)</span>
-        </div>
-      </div>
-
-      <div class="box exercise-select">
-        <div class="box-label">Select one:</div>
-        <div class="exercise-grid">
-          <label class="choice" data-group="exercise">
-            <input type="checkbox" name="exercise" value="not-doing" />
-            <span class="fake-box"></span>
-            <span>I am not doing home exercises for my workplace<br />injury.</span>
-          </label>
-          <label class="choice" data-group="exercise">
-            <input type="checkbox" name="exercise" value="doing" />
-            <span class="fake-box"></span>
-            <span>I am doing home exercises for my workplace<br />injury.</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="box exercise-list">
-        <div class="box-label">List the exercises you are doing:</div>
-        <textarea aria-label="List the exercises"></textarea>
-      </div>
-
-      <h2 class="section-title other-title">Other Information</h2>
-
-      <div class="box other-info">
-        <div class="box-label">I would like to provide the following additional information about my claim/injury:</div>
-        <div class="blue-value other-info-value">No info Testing Testing</div>
-      </div>
-
-      <footer class="footer">
-        <span>Worker App ID: 712041</span>
-        <span>Submitted: March 19, 2024 19:21</span>
-        <span class="page-number">Page 2 of 3</span>
-      </footer>
+    <section class="page page-two">
+      <div class="pain"><span>I rate my current pain/discomfort on a scale of 1-10,<br>where 1 is no pain and 10 is severe pain out of 10.</span><div class="pain-grid" data-exclusive></div></div>
+      <fieldset><legend>Select one:</legend><div class="options cols-2" data-exclusive>
+        <label><input type="checkbox"> I am not continuing to<br>receive medical treatment for<br>my workplace injury.</label>
+        <label><input type="checkbox" data-toggle="provider-type"> I am continuing to receive<br>medical treatment for my<br>workplace injury from: <span><input id="provider-type" class="text-line" type="text" disabled><small>(Medical Provider Type)</small></span></label>
+      </div></fieldset>
+      <div class="medical-row">My last medical treatment was <span><i class="text-line static-line" aria-hidden="true"></i><small>Date</small></span> from <span><input class="text-line" type="text"><small>(Medical Provider Name)</small></span></div>
+      <div class="medical-row">My next medical treatment is <span><i class="text-line static-line" aria-hidden="true"></i><small>Date</small></span> from <span><input class="text-line" type="text"><small>(Medical Provider Name)</small></span></div>
+      <div class="medical-row">I am attending a Chiropractor or Physiotherapist <span class="wide"><input class="text-line" type="text"><small>(Frequency)</small></span></div>
+      <fieldset><legend>Select one:</legend><div class="options cols-2" data-exclusive>
+        <label><input type="checkbox"> I am not taking medication<br>for my workplace injury.</label>
+        <label><input type="checkbox" data-toggle="medication"> I am taking medication for my<br>workplace injury: <span><input id="medication" class="text-line" type="text" disabled><small>(Name of prescribed medication)</small></span></label>
+      </div></fieldset>
+      <fieldset><legend>Select one:</legend><div class="options cols-2" data-exclusive>
+        <label><input type="checkbox"> I am not doing home exercises for my workplace<br>injury.</label>
+        <label><input type="checkbox"> I am doing home exercises for my workplace<br>injury.</label>
+      </div></fieldset>
+      <label class="box-label tall exercises">List the exercises you are doing:<textarea></textarea></label>
+      <h2>Other Information</h2>
+      <label class="box-label">I would like to provide the following additional information about my claim/injury:<textarea>No info Testing Testing</textarea></label>
+      <footer><span>Worker <b>App ID:</b> 712041</span><span>Submitted: March 19, 2024 19:21<br>Page 2 of 3</span></footer>
     </section>
 
-    <!-- PAGE 3 -->
-    <section class="page page-3" aria-label="Worker Progress Report page 3 of 3">
-      <div class="certification">
-        <label class="cert-row">
-          <input type="checkbox" checked />
-          <span class="fake-box"></span>
-          <span>I certify that the information given on this form is true, correct and complete to the best of my<br />
-          knowledge. I agree to notify the Workers Compensation Board of Manitoba (WCB) immediately once I<br />
-          return to any form of work and/or employment. I understand that it is an offence to knowingly make<br />
-          a false statement to the WCB. I also understand that it is an offence to withhold information from<br />
-          WCB which affects my entitlement to compensation (e.g., full or partial recovery from injury, ability to<br />
-          return to work, sources of additional income, etc.). I understand that refusing to co-operate with, or<br />
-          follow my treatment, may result in the WCB reducing or suspending my benefits.</span>
-        </label>
-
-        <label class="cert-row privacy-row">
-          <input type="checkbox" checked />
-          <span class="fake-box"></span>
-          <span>I understand that the <a href="#" onclick="return false;">Privacy Notice</a> applies to the personal information collected in this document.</span>
-        </label>
-      </div>
-
-      <footer class="footer">
-        <span>Worker App ID: 712041</span>
-        <span>Submitted: March 19, 2024 19:21</span>
-        <span class="page-number">Page 3 of 3</span>
-      </footer>
+    <section class="page page-three">
+      <label class="cert"><input type="checkbox" checked> <span>I certify that the information given on this form is true, correct and complete to the best of my knowledge. I agree to notify the Workers Compensation Board of Manitoba (WCB) immediately once I return to any form of work and/or employment. I understand that it is an offence to knowingly make a false statement to the WCB. I also understand that it is an offence to withhold information from WCB which affects my entitlement to compensation (e.g., full or partial recovery from injury, ability to return to work, sources of additional income, etc.). I understand that refusing to co-operate with, or follow my treatment, may result in the WCB reducing or suspending my benefits.</span></label>
+      <label class="cert"><input type="checkbox" checked> <span>I understand that the <a href="#">Privacy Notice</a> applies to the personal information collected in this document.</span></label>
+      <footer><span>Worker <b>App ID:</b> 712041</span><span>Submitted: March 19, 2024 19:21<br>Page 3 of 3</span></footer>
     </section>
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>
