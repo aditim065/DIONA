@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical & Travel Expense Request</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="toolbar-title">WCB Medical &amp; Travel Expense Request</div>
+  <div class="toolbar-actions">
+    <button type="button" onclick="loadDataset('original')">Original PDF data</button>
+    <button type="button" onclick="loadDataset('one')">1-row demo</button>
+    <button type="button" onclick="loadDataset('ten')">10-row demo</button>
+    <button type="button" onclick="addRowToAll()">+ Add row to all</button>
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+  </div>
+</div>
+
+<main id="document">
+  <section class="pdf-page" id="page1">
+    <header class="pdf-header">
+      <div class="brand">
+        <img src="assets/wcb-logo.png" alt="Workers Compensation Board of Manitoba">
+      </div>
+      <div class="contact">
+        <div>333 Broadway</div>
+        <div>Winnipeg, MB R3C 4W3</div>
+        <div>Phone: (204) 954-4321</div>
+        <div>Toll Free: 1-855-954-4321</div>
+        <div>wcb.mb.ca</div>
+      </div>
+      <div class="title-block">
+        <h1>Medical &amp; Travel Expense<br>Request</h1>
+        <div class="claim-box">Claim No. 20042047</div>
+      </div>
+    </header>
+
+    <p class="intro"><a>Madeleine Willson</a> requested reimbursement for the following medical and/or travel expenses:</p>
+
+    <section class="expense-section" data-section="prescription">
+      <div class="section-heading"><h2>Prescription Drugs</h2><button type="button" class="add-row" onclick="addRow('prescription')">+ Add row</button></div>
+      <table><thead><tr><th>Drug Name</th><th>Prescription Date</th><th>Date Purchased</th><th>Healthcare Provider Name</th><th>Paid Amount</th></tr></thead><tbody id="prescription-body"></tbody></table>
+    </section>
+
+    <section class="expense-section" data-section="otc">
+      <div class="section-heading"><h2>Over-the-Counter Drugs</h2><button type="button" class="add-row" onclick="addRow('otc')">+ Add row</button></div>
+      <table><thead><tr><th>Drug Name</th><th>Date Purchased</th><th>Paid Amount</th><th>Seller's Name</th><th>Reason for Purchasing</th></tr></thead><tbody id="otc-body"></tbody></table>
+    </section>
+
+    <section class="expense-section" data-section="supplies">
+      <div class="section-heading"><h2>Bandages, Braces or Other Medical Supplies</h2><button type="button" class="add-row" onclick="addRow('supplies')">+ Add row</button></div>
+      <table><thead><tr><th>Item Purchased</th><th>Date Purchased</th><th>Was this Prescribed?</th><th>Healthcare Provider Name</th><th>Paid Amount</th><th>Seller's Name</th></tr></thead><tbody id="supplies-body"></tbody></table>
+    </section>
+
+    <section class="expense-section" data-section="parking">
+      <div class="section-heading"><h2>Parking for Medical Appointments</h2><button type="button" class="add-row" onclick="addRow('parking')">+ Add row</button></div>
+      <table><thead><tr><th>Address of Healthcare Provider/Medical Facility</th><th>Date</th><th>Paid Amount</th><th>Meter Used?</th><th>Meter Number</th></tr></thead><tbody id="parking-body"></tbody></table>
+    </section>
+
+    <section class="expense-section mileage-section" data-section="mileage">
+      <div class="section-heading"><h2>Mileage to Medical Appointments</h2><button type="button" class="add-row" onclick="addRow('mileage')">+ Add row</button></div>
+      <p class="explanation">The WCB will generally reimburse only those transportation costs which are in excess of costs that would be incurred by the worker while travelling to and from work.</p>
+      <table><thead><tr><th>Appointment Date</th><th>Address of Healthcare Provider/Medical Facility</th><th>Address of Workplace</th><th>Number of km (Round Trip)</th></tr></thead><tbody id="mileage-body"></tbody></table>
+    </section>
+
+    <footer class="pdf-footer">
+      <span>Worker App ID: 712041</span>
+      <span>Submitted: March 28, 2024 20:43<br><strong>Page 1 of 2</strong></span>
+    </footer>
+  </section>
+
+  <section class="pdf-page page2" id="page2">
+    <section class="expense-section taxi-section" data-section="taxi">
+      <div class="section-heading"><h2>Bus or Taxi Fare for Medical Appointments*</h2><button type="button" class="add-row" onclick="addRow('taxi')">+ Add row</button></div>
+      <p class="taxi-note">*Note: Pre-approval is required from your WCB representative to claim taxi fare(s).</p>
+      <table><thead><tr><th>Appointment Date</th><th>Address of Starting Point</th><th>Address of Healthcare Provider/Medical Facility</th><th>Bus or Taxi<br>(indicate one)</th><th>Total Fare Paid</th></tr></thead><tbody id="taxi-body"></tbody></table>
+      <p class="privacy">I understand that the <a>Privacy Notice</a> applies to the personal information collected in this document.</p>
+    </section>
+    <footer class="pdf-footer">
+      <span>Worker App ID: 712041</span>
+      <span>Submitted: March 28, 2024 20:43<br><strong>Page 2 of 2</strong></span>
+    </footer>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
