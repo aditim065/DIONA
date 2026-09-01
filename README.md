@@ -93,6 +93,15 @@ The project focuses on closely matching the original document's layout, typograp
 
 ---
 
+## Videos
+
+### Exercise 1
+Exercise 1 - https://drive.google.com/file/d/1TJYRum_RQelFNdz_l3nnvLZiJFhYsTsA/view?usp=drive_link
+
+### Exercise 2
+Exercise 2 - https://drive.google.com/file/d/10bzRgcdOS7eWPCD5scLRlTrOd0jIQzOU/view?usp=drive_link
+
+
 ## Author
 
 **Aditi M**
